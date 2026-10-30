@@ -1,6 +1,8 @@
 .app-shell {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   background-color: var(--bg-base);
 }
 
@@ -8,7 +10,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   min-width: 0;
+  overflow: hidden;
 }
 
 .app-content {
@@ -17,6 +21,8 @@
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
@@ -24,3 +30,4 @@
     padding: 16px;
   }
 }
+

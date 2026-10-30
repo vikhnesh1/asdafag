@@ -1,5 +1,6 @@
 .app-header {
   height: 68px;
+  flex-shrink: 0;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
   padding: 0 24px;
