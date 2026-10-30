@@ -2,6 +2,15 @@
 
 > An analytics platform and trading decision simulator built for UK electricity utilities procuring wholesale power on the Day-Ahead market (EPEX SPOT / Nord Pool).
 
+
+---
+
+## Live Deployment & Repository
+
+- **Live Deployed Application**: https://uk-wind-trading-desk-4vzu.onrender.com/
+- **Swagger API Documentation**: https://uk-wind-trading-desk-4vzu.onrender.com/docs
+- **GitHub Repository**: https://github.com/vikhnesh1/asdafag
+
 ---
 
 ## 1. Overview & Business Problem
@@ -133,3 +142,64 @@ Open `http://localhost:3000` in your browser.
 | `/api/day-ahead-view`         | `GET`  | Day-Ahead market view using forecasts published prior to 11:00 D-1     |
 | `/api/data-export`            | `GET`  | Stream complete January 2026 paired dataset as CSV download            |
 | `/docs`                       | `GET`  | Interactive Swagger UI API documentation                               |
+
+---
+
+## 6. Project Structure & Directory Breakdown
+
+```
+.
+├── Dockerfile                    # Root multi-stage build for unified cloud deployment on Render
+├── docker-compose.yml            # Multi-container local orchestration (backend :8000, frontend :3001)
+├── backend/
+│   ├── config.py                 # Application settings, SQLite path, and CORS origins
+│   ├── database.py               # SQLAlchemy 2.0 engine, SessionLocal, and DB init
+│   ├── Dockerfile                # Backend container definition
+│   ├── main.py                   # FastAPI app instance, CORS middleware, and router mounts
+│   ├── models.py                 # SQLAlchemy declarative models (ActualGeneration, WindForecast)
+│   ├── requirements.txt          # Python dependencies (FastAPI, SQLAlchemy, Requests, Uvicorn)
+│   ├── schemas.py                # Pydantic validation schemas for API responses
+│   ├── seed_data.py              # Automated Elexon BMRS API ingest for January 2026 (FUELHH & WINDFOR)
+│   ├── routers/
+│   │   ├── accuracy.py           # Quantitative error metrics, daily breakdown, and correlation data
+│   │   ├── actuals.py            # Half-hourly actual outturn time series endpoints
+│   │   ├── comparison.py         # Paired forecast vs actual comparison with signed errors
+│   │   ├── day_ahead.py          # Day-Ahead point-in-time view (filtered <= 11:00 UTC D-1)
+│   │   ├── export.py             # CSV streaming export of January 2026 dataset
+│   │   ├── forecasts.py          # Forecast time series endpoints
+│   │   └── overview.py           # Executive KPIs and monthly trend summary
+│   └── services/
+│       ├── data_service.py       # SQL window functions joining hourly forecasts with half-hourly actuals
+│       └── metrics.py            # Vectorized calculation of MAE, RMSE, nRMSE, Bias, and Max Error
+├── frontend/
+│   ├── Dockerfile                # Frontend Docker container definition
+│   ├── index.html                # HTML5 entry point with responsive viewport metadata
+│   ├── package.json              # React 18, Ant Design 5, ECharts, and TanStack Query dependencies
+│   ├── vite.config.js            # Vite build configuration and local API proxy
+│   └── src/
+│       ├── main.jsx              # React DOM root render
+│       ├── App.jsx               # Client routes, theme provider, and QueryClient setup
+│       ├── index.css             # Design tokens, color system, and layout resets
+│       ├── api/
+│       │   └── client.js         # Centralized Axios HTTP client with unified error handling
+│       ├── components/
+│       │   ├── Common/           # Reusable UI widgets (ErrorAlert, KpiCard, PageHeader)
+│       │   └── Layout/           # AppLayout shell, Header, and Sidebar navigation
+│       ├── context/
+│       │   └── ThemeContext.jsx  # Dark/Light theme toggle context with local storage persistence
+│       ├── hooks/
+│       │   └── useTradingData.js # TanStack Query hooks for caching and fetching backend endpoints
+│       └── pages/
+│           ├── Overview.jsx           # Executive overview with fleet KPIs and generation curve
+│           ├── ForecastComparison.jsx # Interactive side-by-side forecast vs actual with error bands
+│           ├── AccuracyAnalytics.jsx  # Quantitative evaluation: MAE, RMSE, Bias, and error distribution
+│           ├── DayAheadTrading.jsx    # Day-Ahead decision view with point-in-time 11:00 D-1 cutoff
+│           └── DataExplorer.jsx       # Tabular data grid with settlement period filtering and CSV export
+├── docs/
+│   ├── specs.md                  # Detailed business requirements and trading domain context
+│   ├── architecture.md           # End-to-end technical architecture and data flow diagrams
+│   ├── plan.md                   # Multi-phase execution and milestones roadmap
+│   ├── conventions.md            # Coding conventions and production standards
+│   └── design-conventions.md     # UI/UX design tokens and component specifications
+└── README.md                     # Comprehensive setup guide, architecture, and API reference
+```
