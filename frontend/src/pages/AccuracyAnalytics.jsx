@@ -1,6 +1,5 @@
-import { Row, Col, Card, Spin, Alert, Tooltip } from 'antd';
+import { Row, Col, Card, Spin, Alert } from 'antd';
 import {
-  InfoCircleOutlined,
   CompassOutlined,
   WarningOutlined,
   RiseOutlined,
@@ -41,14 +40,6 @@ export function AccuracyAnalytics() {
           <p className="page-subtitle">
             Quantitative evaluation of National Grid ESO wind models across January 2026.
           </p>
-        </div>
-
-        <div className="methodology-note">
-          <Tooltip title="In power trading, MAPE is prohibited because calm days with near-zero wind cause division by zero. MAE, RMSE, and nRMSE are the industry standards.">
-            <span className="methodology-badge">
-              <InfoCircleOutlined /> MAPE Excluded (Standard Energy Trading Practice)
-            </span>
-          </Tooltip>
         </div>
       </div>
 
