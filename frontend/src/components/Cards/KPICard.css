@@ -1,0 +1,100 @@
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-card) !important;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--accent-cyan));
+}
+
+.kpi-card.accent-cyan { --card-accent: var(--accent-cyan); }
+.kpi-card.accent-amber { --card-accent: var(--accent-amber); }
+.kpi-card.accent-emerald { --card-accent: var(--accent-emerald); }
+.kpi-card.accent-rose { --card-accent: var(--accent-rose); }
+.kpi-card.accent-violet { --card-accent: var(--accent-violet); }
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.kpi-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.kpi-icon {
+  font-size: 1.1rem;
+  color: var(--card-accent, var(--accent-cyan));
+  opacity: 0.85;
+}
+
+.kpi-body {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.kpi-unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kpi-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.kpi-trend {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+}
+
+.kpi-trend.trend-up {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose);
+}
+
+.kpi-trend.trend-down {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+}
+
+.kpi-trend.trend-neutral {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--text-secondary);
+}
