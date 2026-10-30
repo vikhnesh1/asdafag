@@ -1,0 +1,62 @@
+.day-ahead-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-picker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.picker-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.auction-date-picker {
+  background: var(--bg-card) !important;
+  border-color: var(--border-card) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm);
+}
+
+.gate-closure-banner {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+}
+
+.gate-icon {
+  font-size: 20px;
+  color: var(--accent-amber);
+  flex-shrink: 0;
+}
+
+.gate-highlight {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent-amber);
+}
+
+.da-chart-card {
+  padding: 12px 16px;
+}
+
+.text-cyan {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.text-amber {
+  color: var(--accent-amber);
+  font-weight: 600;
+}

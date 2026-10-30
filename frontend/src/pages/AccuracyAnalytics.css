@@ -1,0 +1,28 @@
+.accuracy-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.methodology-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  cursor: help;
+}
+
+.analytics-loading {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.analytics-card {
+  padding: 8px 12px;
+}

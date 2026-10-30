@@ -1,0 +1,23 @@
+.data-explorer-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input {
+  width: 280px;
+  background: var(--bg-card) !important;
+  border-color: var(--border-card) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm);
+}
+
+.table-card {
+  padding: 12px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
