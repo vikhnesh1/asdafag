@@ -145,10 +145,10 @@ export function DayAheadView() {
                 title="Day Bias (Net Position)"
                 value={`${metrics?.bias > 0 ? '+' : ''}${metrics?.bias?.toLocaleString()}`}
                 unit="MW"
-                subtitle={metrics?.bias > 0 ? 'Short position (under-bought power)' : 'Long position'}
+                subtitle={metrics?.bias > 0 ? 'Short position (under-bought)' : 'Long position'}
                 trend={{
                   direction: metrics?.bias > 0 ? 'up' : 'down',
-                  label: metrics?.bias > 0 ? 'Under-procured' : 'Over-procured',
+                  label: metrics?.bias > 0 ? 'Net Short' : 'Net Long',
                 }}
                 icon={<CheckCircleOutlined />}
                 color={metrics?.bias > 0 ? 'rose' : 'emerald'}
